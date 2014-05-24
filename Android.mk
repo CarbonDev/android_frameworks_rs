@@ -1,7 +1,12 @@
 
 LOCAL_PATH:=$(call my-dir)
 
+ifeq ($(TARGET_USE_JUSTARCHI_V2),true)
 rs_base_CFLAGS := -Wno-error -Wall -Wno-unused-parameter -Wno-unused-variable
+else
+rs_base_CFLAGS := -Werror -Wall -Wno-unused-parameter -Wno-unused-variable
+endif
+
 ifeq ($(TARGET_BUILD_PDK), true)
   rs_base_CFLAGS += -D__RS_PDK__
 endif
